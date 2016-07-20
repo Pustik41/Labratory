@@ -4,6 +4,7 @@ import exceptions.PatientCreationException;
 import exceptions.PatientNotFoundException;
 import model.Patient;
 import model.Report;
+import model.Status;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,7 +22,7 @@ public interface DoctorController {
     Report createReport(String name, String surname, LocalDate dateOfBirth, String phoneNumber, String email)
             throws PatientCreationException;
 //todo
-    Patient findPatient(String name, String surname, LocalDate dateOfBirth) throws PatientNotFoundException;
+    Map<Patient, List<String>>  findPatientWithReports(String name, String surname, LocalDate dateOfBirth) throws PatientNotFoundException;
 /**
  *
  * @return Doctors patient reports with status IN_ASSISTANT_PROGRESS
@@ -42,8 +43,6 @@ public interface DoctorController {
      *
      * */
     Map<Patient, List<Report>> allDonePatients();
-
-
 
 
 }
